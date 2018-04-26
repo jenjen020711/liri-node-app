@@ -71,7 +71,34 @@ console.log(data);
 
 //OMDB--------------
 
+function movieThis()  {
+	if(input===undefined){
+		input="Mr. Nobody"
+
+	var queryUrl = "http://www.omdbapi.com/?t=" + input + "&y=&plot=short&r=json";
 
 
+// Console Log
+console.log(queryUrl);
+request(queryUrl, function(error, response, body) {
 
+  // If the request was successful...
+  if (!error && response.statusCode === 200) {
 
+  	console.log( "Request successful!");
+    // Then log the body from the site!
+    console.log(response);
+    console.log(JSON.parse(body).Title);
+    console.log(JSON.parse(body).Year);
+    console.log(JSON.parse(body).imdbRating);
+    console.log(JSON.parse(body).Country);
+    console.log(JSON.parse(body).Language);
+    console.log(JSON.parse(body).Plot);
+    console.log(JSON.parse(body).Actors);
+  }
+});
+
+}else{
+  var queryUrl = "http://www.omdbapi.com/?t=" + input + "&y=&plot=short&r=json";
+}
+};
